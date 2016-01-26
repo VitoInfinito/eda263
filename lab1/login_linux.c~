@@ -103,10 +103,8 @@ int main(int argc, char *argv[]) {
 			/* Don't forget to include the salt */
 			user_pass = crypt(user_pass, passwddata->passwd_salt);
 			if (user_pass == NULL ) {
-				continue;
-			}
-
-			if (!strcmp(user_pass, passwddata->passwd)) {
+				printf("Crypto failure");
+			} else if (!strcmp(user_pass, passwddata->passwd)) {
 				printf("Number of failed attempts: %d\n", passwddata->pwfailed);
 				passwddata->pwfailed = 0;
 				passwddata->pwage++;
